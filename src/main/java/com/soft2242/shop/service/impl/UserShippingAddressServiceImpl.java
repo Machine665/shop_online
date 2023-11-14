@@ -36,7 +36,7 @@ public class UserShippingAddressServiceImpl extends ServiceImpl<UserShippingAddr
 //        System.out.println(addressVO);
         UserShippingAddress convert = AddressConvert.INSTANCE.convert(addressVO);
         if (addressVO.getIsDefault() == AddressDefaultEnum.DEFAULT_ADDRESS.getValue()) {
-            List<UserShippingAddress> list = baseMap per.selectList(new LambdaQueryWrapper<UserShippingAddress>()
+            List<UserShippingAddress> list = baseMapper.selectList(new LambdaQueryWrapper<UserShippingAddress>()
                 .eq(UserShippingAddress::getIsDefault, AddressDefaultEnum.DEFAULT_ADDRESS.getValue()));
             if (list.size() > 0) {
                 throw new ServerException("已存在默认地址，请勿重复操作");
